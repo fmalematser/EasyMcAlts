@@ -1,69 +1,45 @@
-// Load diamonds from localStorage or start at 0
-let diamonds = parseInt(localStorage.getItem('diamonds')) || 0;
+// Navigation dots
+const navGenerate = document.getElementById('nav-generate');
+const navAbout = document.getElementById('nav-about');
+const navLogout = document.getElementById('nav-logout');
 
-// Update diamond count display if present
-function updateDiamondUI() {
-  const el = document.getElementById('diamondCount');
-  if (el) el.textContent = diamonds;
+const pageGenerate = document.getElementById('page-generate');
+const pageAbout = document.getElementById('page-about');
+const pageLogout = document.getElementById('page-logout');
+
+// Function to switch active dot
+function setActive(dot) {
+  [navGenerate, navAbout, navLogout].forEach(d => d.classList.remove('active'));
+  dot.classList.add('active');
 }
 
-// Simulate watching an ad: add 1 diamond
-function watchAd() {
-  diamonds++;
-  localStorage.setItem('diamonds', diamonds);
-  updateDiamondUI();
-  alert("Thanks for watching the ad! +1 Diamond");
+// Show and hide pages
+function showPage(page) {
+  pageGenerate.style.display = 'none';
+  pageAbout.style.display = 'none';
+  pageLogout.style.display = 'none';
+
+  page.style.display = 'block';
 }
 
-// Generate alt process with random timer (1-5 minutes)
-function generateAlt() {
-  if (diamonds < 20) {
-    alert("You need 20 diamonds to generate an alt.");
-    return;
-  }
+// Event listeners for navigation dots
+navGenerate.addEventListener('click', () => {
+  setActive(navGenerate);
+  showPage(pageGenerate);
+});
 
-  diamonds -= 20;
-  localStorage.setItem('diamonds', diamonds);
-  updateDiamondUI();
+navAbout.addEventListener('click', () => {
+  setActive(navAbout);
+  showPage(pageAbout);
+});
 
-  const timerDisplay = document.getElementById('timer');
-  const status = document.getElementById('status');
-  let waitTime = Math.floor(Math.random() * 5) + 1; // 1 to 5 minutes
-  let seconds = waitTime * 60;
+navLogout.addEventListener('click', () => {
+  setActive(navLogout);
+  showPage(pageLogout);
+});
 
-  status.textContent = "Generating account... please wait.";
-
-  const countdown = setInterval(() => {
-    let min = Math.floor(seconds / 60);
-    let sec = seconds % 60;
-    timerDisplay.textContent = `Estimated Time: ${min}:${sec < 10 ? '0' : ''}${sec}`;
-
-    if (seconds-- <= 0) {
-      clearInterval(countdown);
-      status.textContent = "Record depleted. Try again later.";
-      timerDisplay.textContent = "";
-    }
-  }, 1000);
-}
-
-// Login function: just alert and redirect to plans page
-function login() {
-  alert("Logged in successfully!");
-  window.location.href = "plans.html";
-}
-
-// Register function: alert and redirect to plans page
-function register() {
-  alert("Registered successfully!");
-  window.location.href = "plans.html";
-}
-
-// Select plan function: only free plan works now
-function selectPlan(plan) {
-  if (plan === 'free') {
-    window.location.href = "generate.html";
-  }
-}
-
-// Initialize diamond UI count on page load
-updateDiamondUI();
+// Log out confirmation button
+document.getElementById('confirm-logout').addEventListener('click', () => {
+  alert('Logged out! Redirecting to login page...');
+  // You can redirect here, e.g. window.location.href = 'login.html';
+});
