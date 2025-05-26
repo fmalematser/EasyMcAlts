@@ -1,74 +1,172 @@
-/* Background and text */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #e0e0e0;
+/* Base styles */
+body, html {
+  margin: 0; 
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  height: 100%;
+  background-color: #0a0a0a;
+  color: #00cfff;
+  overflow-x: hidden;
 }
 
-/* Container to center content */
+/* Background animation */
+.bg-animation {
+  position: fixed;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  background: repeating-radial-gradient(circle at center, #0a0a0a, #101010 1px, #0a0a0a 2px);
+  background-size: 12px 12px;
+  animation: pulse 25s infinite linear;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+/* Main container styling */
 .container {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 20px;
+  max-width: 700px;
+  margin: 8vh auto;
+  padding: 50px 40px;
+  background: rgba(0,0,0,0.75);
+  border: 2px solid #00cfff;
+  border-radius: 20px;
+  box-shadow: 0 0 50px #00cfff;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease forwards;
 }
 
-/* Buttons style */
-button {
-  background-color: #1e88e5;
-  border: none;
-  color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-  border-radius: 6px;
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main heading */
+h1 {
+  font-size: 3.5em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px #00cfff;
+}
+
+/* Description */
+.description {
+  font-size: 1.5em;
+  color: #a0f7ff;
+  margin-bottom: 40px;
+  line-height: 1.4;
+  text-shadow: 0 0 12px #00d1ff;
+}
+
+/* Navigation dots container */
+.nav-dots {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+  z-index: 10;
+}
+
+/* Each navigation dot */
+.nav-dot {
+  width: 20px;
+  height: 20px;
+  background-color: #003344;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00cfff;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(30, 136, 229, 0.3);
+  border: 2.5px solid transparent;
 }
 
-button:hover {
-  background-color: #1565c0;
-  box-shadow: 0 6px 12px rgba(21, 101, 192, 0.6);
+.nav-dot.active, .nav-dot:hover {
+  background-color: #00cfff;
+  box-shadow: 0 0 35px #00ffff, 0 0 60px #00ffff;
+  border-color: #00ffff;
 }
 
-/* Horizontal button container */
+/* Buttons container for horizontal layout */
 .button-row {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-/* Input fields */
-input[type="text"],
-input[type="password"] {
-  background-color: #222;
-  border: 1px solid #444;
-  color: #eee;
-  padding: 12px 15px;
-  margin: 10px 0;
-  border-radius: 5px;
-  width: 250px;
-  font-size: 16px;
+/* Large glowing buttons */
+button, .btn {
+  background-color: #00cfff;
+  color: #000;
+  font-weight: 900;
+  font-size: 22px;
+  padding: 20px 55px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 40px #00cfff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+  min-width: 160px;
+  text-transform: uppercase;
+}
+
+button:hover, .btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 60px #00ffff, 0 0 100px #00ffff;
+}
+
+button:disabled, .btn.disabled {
+  background-color: #004d59;
+  box-shadow: none;
+  cursor: not-allowed;
+  color: #004d59;
+}
+
+/* Inputs */
+input[type="text"], input[type="password"] {
+  width: 90%;
+  padding: 18px 22px;
+  margin-bottom: 25px;
+  font-size: 20px;
+  background-color: #000;
+  border: 2.5px solid #00cfff;
+  border-radius: 15px;
+  color: #00cfff;
+  outline: none;
+  box-shadow: 0 0 25px #00cfff;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #00ffff;
 }
 
 input::placeholder {
-  color: #aaa;
-}
-
-/* Heading styles */
-h1 {
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  margin-bottom: 30px;
+  color: #007a8a;
 }
 
 /* Status and timer text */
 #status, #timer {
-  margin-top: 25px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #90caf9;
+  font-size: 1.5em;
+  color: #00ffff;
+  margin-top: 30px;
+  text-shadow: 0 0 15px #00ffff;
 }
