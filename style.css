@@ -1,50 +1,74 @@
+/* Background and text */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: white;
-  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
+/* Container to center content */
 .container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 20px;
   text-align: center;
-  padding: 100px 20px;
-  animation: fadeInUp 1s ease-in-out;
 }
 
+/* Buttons style */
 button {
-  background-color: #2196F3;
+  background-color: #1e88e5;
   border: none;
-  padding: 10px 20px;
-  margin: 10px;
   color: white;
+  padding: 14px 28px;
   font-size: 16px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(30, 136, 229, 0.3);
 }
 
 button:hover {
-  box-shadow: 0 0 10px #00ffff;
-  transform: scale(1.05);
+  background-color: #1565c0;
+  box-shadow: 0 6px 12px rgba(21, 101, 192, 0.6);
 }
 
-input {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 6px;
-  border: none;
-  width: 200px;
+/* Horizontal button container */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-/* Scroll animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Input fields */
+input[type="text"],
+input[type="password"] {
+  background-color: #222;
+  border: 1px solid #444;
+  color: #eee;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 250px;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* Heading styles */
+h1 {
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-bottom: 30px;
+}
+
+/* Status and timer text */
+#status, #timer {
+  margin-top: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #90caf9;
 }
