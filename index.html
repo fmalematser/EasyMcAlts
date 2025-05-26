@@ -3,21 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Easy Alts - Login/Register</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>EasyAlts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Easy Alts</h1>
-    <div id="auth">
-      <input type="text" id="username" placeholder="Username" />
-      <input type="password" id="password" placeholder="Password" />
-      <div class="button-row">
-        <button onclick="login()">Login</button>
-        <button onclick="register()">Register</button>
-      </div>
+
+  <div class="bg-animation"></div>
+
+  <!-- Top navigation dots -->
+  <div class="nav-dots">
+    <div class="nav-dot active" id="nav-generate" title="Generate Alts"></div>
+    <div class="nav-dot" id="nav-about" title="About"></div>
+    <div class="nav-dot" id="nav-logout" title="Log Out"></div>
+  </div>
+
+  <div class="container" id="content">
+    <h1>EasyAlts</h1>
+    <p class="description">
+      The best website to get free alts quickly and easily.<br/>
+      Watch ads to earn diamonds and generate accounts instantly!
+    </p>
+
+    <!-- Generate Alts Page -->
+    <div id="page-generate">
+      <button class="btn">Generate Alts</button>
+    </div>
+
+    <!-- About Page -->
+    <div id="page-about" style="display:none;">
+      <h2>About EasyAlts</h2>
+      <p>
+        EasyAlts is your trusted source for free alternate accounts.<br/>
+        Earn diamonds by watching ads and unlock premium features soon!
+      </p>
+    </div>
+
+    <!-- Logout Page -->
+    <div id="page-logout" style="display:none;">
+      <h2>Log Out</h2>
+      <p>Are you sure you want to log out?</p>
+      <button class="btn" id="confirm-logout">Log Out</button>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <script src="scripts.js"></script>
+
 </body>
 </html>
